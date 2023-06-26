@@ -1,0 +1,54 @@
+*{
+    background-color: tan;
+}
+
+
+header{
+    display: flex;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(41, 84, 41);
+    text-align: center;
+}
+
+#header{
+    font-size: xx-large;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(41, 84, 41);
+    text-align: center;
+}
+
+nav{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(41, 84, 41);
+    align-items: center;
+}
+
+nav a {
+    background-color: rgb(41, 84, 41);
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+nav a:hover{
+    transition: all .2s ease-in-out;
+    transform: scale(1.2);
+    text-decoration: underline;
+}
+
+
+#logo{
+    height: 75px;
+    width: 75px;
+    background-color: rgb(41, 84, 41);
+    padding-left: 20px;
+}
+
+main{
+    height: calc(100vh - 100px);
+}
