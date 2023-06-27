@@ -1,8 +1,10 @@
+/* General Styling */
 *{
     background-color: tan;
 }
 
 
+/* NavBar */
 header{
     display: flex;
     height: 100px;
@@ -49,6 +51,24 @@ nav a:hover{
     padding-left: 20px;
 }
 
+/* Main Section */
+
 main{
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    width: 100%;
+}
+
+#park-btn{
+    align-self: flex-start;
+}
+
+.hide {
+    display: none;
 }

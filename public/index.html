@@ -18,11 +18,17 @@
         </nav>
     </header>
     <main>
-        <section id="park-list">
-            <button id="park-btn">Check Availability</button>
+        <section id="park-list" class="container">
+            <button id="park-btn" onclick="addReserve">Check Availability</button>
             <div id="all-sites">
-                
+                <ul id="sites"></ul>
             </div>
+        </section>
+        <section id="res-list" class="container">
+            <div>
+                <ul id="new-res"></ul>
+            </div>
+            <button class="hide">Reserve</button>
         </section>
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

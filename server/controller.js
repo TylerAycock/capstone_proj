@@ -12,11 +12,14 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 module.exports = {
     getCampsites: (req,resp) =>{
-        sequilize.query(`
-        SELECT *
-        FROM campsites
+        sequelize.query(`
+        SELECT parks.park_name AS park, camp.campsite_name AS site, campsite_id as ID, occupancy AS occ
+        FROM campsites AS camp
+        JOIN parks
+        ON parks.park_id = camp.park_id
+        WHERE available = true
         `).then(dbres=>{
-            resp.status(200).send(dbres)
+            resp.status(200).send(dbres[0])
         }).catch(err=>console.log(err))
     }
 }

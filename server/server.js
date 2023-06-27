@@ -12,11 +12,11 @@ app.use(express.static('public'))
 const {SERVER_PORT} = process.env
 const {seed} = require('./seed')
 
+
 app.get('/', (req,resp) => {
     resp.status(200).sendFile(__dirname,'../public/index.html')
 })
 
-//this will be for the profile page
 app.get('/profile', (req,resp)=>{
     resp.status(200).sendFile(__dirname,'../public/profile/profile.html')
 })
@@ -26,6 +26,8 @@ const {
 } = require('./controller.js')
 
 app.post('/seed', seed)
+
+//MVP features 
 
 app.get('/api/campsites', getCampsites)
 

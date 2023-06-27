@@ -16,26 +16,19 @@ module.exports = {
             DROP TABLE IF EXISTS campsites;
             DROP TABLE IF EXISTS parks;
 
-            CREATE TABLE rangers (
-                ranger_id SERIAL PRIMARY KEY, 
-                name VARCHAR NOT NULL,
-                position VARCHAR NOT NULL,
-                park VARCHAR NOT NULL,
-                cell VARCHAR NOT NULL,
-                email VARCHAR NOT NULL,
-                exp INTEGER NOT NULL
-            );
-
             CREATE TABLE parks (
                 park_id SERIAL PRIMARY KEY,
                 park_name VARCHAR NOT NULL
             );
-            
-            INSERT INTO rangers (name, position, park, cell, email, exp)
-            VALUES ('Smokey The Bear','Bear' , 'American Wilderness', 8007873473, 'smokey@onlyyou.com', 50),
-            ('Paul Bunyan','Head Forester' , 'Yosemite National Park', 1234567890, 'paulB@nationalpark.gov', 200),
-            ('Ron Swanson','Dir of Food Op' , 'Joshua Tree National Park', 3334445555, 'ronS@nationalpark.gov', 15);
 
+            CREATE TABLE campsites (
+                campsite_id SERIAL PRIMARY KEY,
+                park_id INTEGER REFERENCES parks(park_id) NOT NULL,
+                campsite_name VARCHAR(50) NOT NULL,
+                occupancy INTEGER NOT NULL,
+                available BOOLEAN NOT NULL
+            );
+            
             INSERT INTO parks (park_name)
             VALUES ('Acadia'),
             ('Arches'),
@@ -46,9 +39,43 @@ module.exports = {
             ('Channel Islands'),
             ('Yosemite'),
             ('Joshua Tree'),
-            ('Yellow Stone');
+            ('Yellow Stone'); 
+        
+            INSERT INTO campsites (park_id, campsite_name, occupancy, available)
+            VALUES (2, 'River Spot', 10, true),
+            (2, 'Big Camp', 20, true),
+            (3, 'Little Camp', 2, true),
+            (3, 'Hideaway', 5, true),
+            (1, 'Lucky Spot', 4, true),
+            (9, 'Base Camp', 3, true),
+            (5, 'Bear Camp', 11, true),
+            (3, 'Hidden Meadow', 3, true),
+            (8, 'Scouts Camp', 6, true),
+            (8, 'Star Gazer', 5, true),
+            (7, 'Hiddne Gem', 8, true);
+        
         `).then(() => {
             console.log('DB seeded!')
             res.sendStatus(200)
         }).catch(err => console.log('error seeding DB', err))
     }}
+
+
+
+
+
+
+    // INSERT INTO available (park_name, campsite_name, occupancy, available)
+    // VALUES ('Badlands', 'River Spot', 10, true),
+    // ('Badlands', 'Big Camp', 20, true),
+    // ('Big Bend', 'Little Camp', 2, true),
+    // ('Big Bend', 'Hideaway', 5, true),
+    // ('Arches', 'Lucky Spot', 4, true),
+    // ('Yellow Stone', 'Base Camp', 3, true ),
+    // ('Carlsbad Caverns', 'Bear Camp', 11, true),
+    // ('Big Bend', 'Hidden Meadow', 3, true),
+    // ('Joshua Tree', 'Scouts Camp', 6, true),
+    // ('Joshua Tree', 'Star Gazer', 5, true),
+    // ('Yosemite', 'Hiddne Gem', 8, true);   
+
+
