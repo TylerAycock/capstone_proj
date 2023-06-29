@@ -13,7 +13,7 @@
         <h1 id="header">National Park Campsites</h1>
         <nav>
             <a href="">Home</a>
-            <a href="./profile.html">Profile</a>
+            <a href="./reservations.html">Reservations</a>
             <a href="./parks.html">National Parks</a>
         </nav>
     </header>
@@ -26,9 +26,13 @@
         </section>
         <section id="res-list" class="container">
             <div>
-                <ul id="new-res"></ul>
+                <ul id="new-res">
+                    <li class="hide">Reservation confirmed, Happy Camping!</li>
+                    <img src="./images/checkmark.png" alt="" id="check" class="hide">
+                </ul>
+
             </div>
-            <button class="hide">Reserve</button>
+            <button id="reserve" class="hide">Reserve</button>
         </section>
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

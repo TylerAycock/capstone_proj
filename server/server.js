@@ -22,7 +22,10 @@ app.get('/profile', (req,resp)=>{
 })
 
 const {
-    getCampsites
+    getCampsites,
+    makeReservation,
+    showReservation,
+    deleteRes
 } = require('./controller.js')
 
 app.post('/seed', seed)
@@ -30,6 +33,9 @@ app.post('/seed', seed)
 //MVP features 
 
 app.get('/api/campsites', getCampsites)
+app.put('/api/makeres', makeReservation)
+app.get('/api/getres', showReservation)
+app.delete('/api/delete/:id', deleteRes)
 
 
 
