@@ -21,34 +21,44 @@ const displayRes = (reservArr) => {
             <span>${park_name}</span>
             <span>${campsite_name}</span>
             <span>${occ}</span>
-            <button id="delete" onclick="deleteRes(${res_id})">Cancel</button>
+            <button id="delete" onclick="deleteRes(${campsite_id})">Cancel</button>
         `;
     resList.appendChild(resItem);
   });
 };
 
 // pulls up all reservations
-const showReservation = () => {
+const showReservation = (event) => {
   console.log(`Hey there camper...retrieving reservations`);
+  resList.innerHTML = ""
   axios
     .get("/api/getres")
     .then((resp) => {
-    //   reservArr = resp.data
-    //   console.log(reservArr)
-      displayRes(resp.data);
+      if (resp.data.length === 0) {
+        let nores = document.createElement("li");
+        nores.innerHTML = `
+          <span>No sites currently reserved.</span>
+          <span>Click <a href="./index.html">Here</a> to get started</span>
+        `;
+        resList.appendChild(nores);
+      } else {
+        console.log(resp.data);
+        displayRes(resp.data);
+      }
     })
     .catch((err) => console.log(err));
 };
 
-//deletes reservation 
+//deletes selected reservation
 const deleteRes = (id) => {
-    console.log(`attempting to cancel reservation ID ${id}`)
-    // let index = reservArr.findIndex((site) => site.campsite_id === id);
-    // console.log(reservArr[index])
-    axios.delete(`/api/delete/${id}`)
-    .then(resp =>{
-        console.log('reservation cancled')
-    })
-}
+  console.log(`attempting to cancel reservation ID ${id}`);
+  // let index = reservArr.findIndex((site) => site.campsite_id === id);
+  // console.log(reservArr[index])
+  axios.delete(`/api/delete/${id}`).then((resp) => {
+    console.log("reservation canceled");
+  }).then(() =>{
+    showReservation()
+  }).catch(err =>console.log(err))
+};
 
 myResBtn.addEventListener("click", showReservation);

@@ -3,6 +3,9 @@
     background-color: tan;
 }
 
+.hide {
+    display: none;
+}
 
 /* NavBar */
 header{
@@ -55,26 +58,82 @@ nav a:hover{
 
 main{
     min-height: calc(100vh - 100px);
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
 }
 
-.container{
-    display: flex;
-    width: 100%;
-}
 
 #park-btn{
     align-self: flex-start;
 }
 
-.hide {
-    display: none;
-}
-
 #check{
     height: 25px;
     width: 25px;
+}
+
+/* site cards */
+#park-list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    margin: 50px;
+    gap: 25px;
+}
+
+.site-card{
+    width: 350px;
+    height: 125px;
+    font-size: large;
+    border: 1px solid rgb(41, 84, 41);;
+    display: flex;
+    justify-content: space-between;
+}
+
+#camp-pic{
+    height: 100px;
+    width: 100px;
+    background-color:rgb(41, 84, 41);
+    margin-left: 10px;
+    margin-top: 10px;
+    /* margin-right: 10px; */
+}
+
+#content{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+#site-name{
+    margin-left: 10px;
+    text-decoration: underline;
+    font-size: x-large;
+    font-style: italic;
+}
+
+#park{
+    font-weight: bold;
+    font-style: italic;
+    align-self: flex-start;
+}
+
+#site-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    /* margin-left: 10px; */
+}
+
+#add{
+    border-radius: 10px;
+    margin-right: 10px;
 }
 

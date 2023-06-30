@@ -20,6 +20,7 @@ module.exports = {
         JOIN parks
         ON parks.park_id = camp.park_id
         WHERE available = true
+        ORDER BY park_name asc
         `
       )
       .then((dbres) => {
@@ -61,9 +62,16 @@ module.exports = {
   },
   deleteRes: (req, resp) => {
     console.log(req.params);
-    let resID = req.params
+    let {id} = req.params
     sequelize.query(`
-      UPDATE camp
+      UPDATE campsites
+      SET available = True
+      WHERE campsite_id = ${id};
+
+      DELETE FROM reservations
+      WHERE campsite_id = ${id};
     `)
+    .then(dbres => resp.status(200).send(dbres[0]))
+    .catch(err =>console.log(err))
   },
 };

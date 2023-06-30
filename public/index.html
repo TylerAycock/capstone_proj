@@ -18,19 +18,14 @@
         </nav>
     </header>
     <main>
-        <section id="park-list" class="container">
-            <button id="park-btn" onclick="addReserve">Check Availability</button>
-            <div id="all-sites">
-                <ul id="sites"></ul>
-            </div>
-        </section>
+        <button id="park-btn">Check Availability</button>
+        <section id="park-list" class="container"></section>
         <section id="res-list" class="container">
-            <div>
+            <div id="all-res">
                 <ul id="new-res">
-                    <li class="hide">Reservation confirmed, Happy Camping!</li>
+                    <li id="confirmed" class="hide">Reservation confirmed, Happy Camping!</li>
                     <img src="./images/checkmark.png" alt="" id="check" class="hide">
                 </ul>
-
             </div>
             <button id="reserve" class="hide">Reserve</button>
         </section>

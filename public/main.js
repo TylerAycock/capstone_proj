@@ -1,26 +1,37 @@
 const parkBtn = document.querySelector("#park-btn");
-const sites = document.querySelector(`#sites`);
+const sites = document.querySelector('#park-list');
 const newRes = document.querySelector("#new-res");
 const resBtn = document.querySelector("#reserve");
+const check = document.querySelector('#check');
+const confirmed = document.querySelector('#confirmed');
+
 
 let parksArr = [];
 let newResArr = [];
 
+
+
 //invoked function to display list of avaialble sites
-const displaySites = (parksArr) => {
+const displaySites = (sitesArr) => {
   sites.innerHTML = "";
   // console.log(parksArr)
-  parksArr.forEach((spotObj) => {
+  sitesArr.forEach((spotObj) => {
     // console.log(spotObj);
-    let { site_id, park, site, occ } = spotObj;
-    let listItem = document.createElement("li");
-    listItem.innerHTML = `
-            <span>${park}</span>
-            <span>${site}</span>
-            <span>${occ}</span>
-            <button id="add" onclick="addReserve(${site_id})">Add</button>
+    let { site_id, park, site, occ, price } = spotObj;
+    let siteCard = document.createElement("div");
+    siteCard.classList.add('site-card')
+    siteCard.innerHTML = `
+                <img src="./images/tent.jpg" alt="generic id photo" id="camp-pic">
+                <div id="content">
+                    <ul id="site-details">
+                        <li id="site-name">${site}</li>
+                        <li id="park">${park}</li>
+                        <li id="occ">Occ: ${occ}</li>
+                        <li id="price">Price: ${price} per night </li>
+                    </ul>
+                    <button id="add" onclick="addReserve(${site_id})">ADD</button>
         `;
-    sites.appendChild(listItem);
+    sites.appendChild(siteCard);
   });
 };
 
@@ -44,23 +55,33 @@ const displayCart = (newResArr) => {
 
 //moves a campsite from the available list to your shopping cart list
 const addReserve = (id) => {
-  console.log(`Adding campsite #${id} to shopping cart`);
-  let index = parksArr.findIndex((site) => site.site_id === id);
-  newResArr.push(parksArr[index]);
-  // console.log(newResArr[0])
-  parksArr.splice(index, 1);
-  // console.log(parksArr)
-  displaySites(parksArr);
-  displayCart(newResArr);
-  resBtn.classList.remove("hide");
+  console.log(id);
+  console.log(newResArr);
+  
+  if (newResArr.filter(site =>site.site_id === id).length > 0) {
+    alert("Campsite has already been added to cart!");
+  } else{
+    console.log(`Adding campsite #${id} to shopping cart`);
+    let index = parksArr.findIndex((site) => site.site_id === id);
+    newResArr.push(parksArr[index]);
+    // console.log(newResArr[0])
+    // parksArr.splice(index, 1);
+    // console.log(parksArr)
+    displaySites(parksArr);
+    displayCart(newResArr);
+    resBtn.classList.remove("hide");
+  }
 };
 
 // moves a tentative reservation back to the overall list
 const removeReserve = (id) => {
+  console.log(parksArr);
   console.log(`Campsite #${id} removed from shopping cart`);
   let index = newResArr.findIndex((site) => site.site_id === id);
-  parksArr.push(newResArr[index]);
+  // parksArr.push(newResArr[index]);
   newResArr.splice(index, 1);
+  console.log(parksArr);
+  parksArr.sort();
   displaySites(parksArr);
   displayCart(newResArr);
 
@@ -82,16 +103,18 @@ const getCampsites = () => {
 
 //adds reservation to reservations table and marks aviale as "false"
 const makeRes = (evt) => {
-  if (newResArr.length > 1) {
-    alert("Only One reservation permitted per user");
-  }
-
   let spotObj = newResArr[0];
   axios
     .put("api/makeres", spotObj)
-    .then((resp) => {})
+    .then((resp) => {
+      confirmed.classList.remove('hide')
+      resBtn.classList.add("hide");
+    })
     .catch((err) => console.log(err));
 };
 
 parkBtn.addEventListener("click", getCampsites);
 resBtn.addEventListener("click", makeRes);
+
+
+// newResArr.findIndex((newAddition) => newAddition === -1)

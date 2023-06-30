@@ -38,6 +38,4 @@ app.get('/api/getres', showReservation)
 app.delete('/api/delete/:id', deleteRes)
 
 
-
-
 app.listen(SERVER_PORT, console.log(`Gooood morning CAMPER! Server up on ${SERVER_PORT}`))
