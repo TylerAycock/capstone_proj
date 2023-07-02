@@ -12,23 +12,25 @@
         <img src="./images/NPS-Transparent-Logo.png" alt="national park logo" id="logo">
         <h1 id="header">National Park Campsites</h1>
         <nav>
-            <a href="">Home</a>
+            <a href="./index.html">Home</a>
             <a href="./reservations.html">Reservations</a>
             <a href="./parks.html">National Parks</a>
         </nav>
     </header>
     <main>
-        <button id="park-btn">Check Availability</button>
-        <section id="park-list" class="container"></section>
-        <section id="res-list" class="container">
-            <div id="all-res">
-                <ul id="new-res">
-                    <li id="confirmed" class="hide">Reservation confirmed, Happy Camping!</li>
-                    <img src="./images/checkmark.png" alt="" id="check" class="hide">
-                </ul>
+        <div class="container">
+            <div class="banner">
+                <h2>Available Sites</h2>
             </div>
-            <button id="reserve" class="hide">Reserve</button>
-        </section>
+            <section id="park-list"></section>
+        </div>
+        <div>
+            <div class="banner cart">
+                <img src="./images/shopping_cart.png" id="shopping_cart" alt="shopping cart">
+                <button id="reserve" class="hide">Reserve</button>
+            </div>
+            <section id="res-list"></section>
+        </div>
     </main>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>

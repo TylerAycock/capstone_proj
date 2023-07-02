@@ -1,11 +1,8 @@
-/* General Styling */
 /* green: rgb(41, 84, 41) */
+
+/* general styling */
 *{
     background-color: tan;
-}
-
-.hide {
-    display: none;
 }
 
 /* NavBar */
@@ -49,8 +46,6 @@ nav a:hover{
     transform: scale(1.2);
 }
 
-
-
 #logo{
     height: 75px;
     width: 75px;
@@ -64,17 +59,37 @@ main{
     min-height: calc(100vh - 100px);
     width: 100%;
     display: flex;
-    /* align-items: center; */
-    justify-content: space-around;
+    /* justify-content: center; */
+}
+
+/* reservation list  */
+
+.container{
+    margin-left: 50px;
 }
 
 .banner{
-    background-color: rgb(41, 84, 41);
     display: flex;
     height: 50px;
     margin-top: 25px;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
+}
+
+.banner h2 {
+    background-color: tan;
+    text-decoration: underline;
+}
+
+#none{
+    font-size: x-large;
+    font-weight: bold;
+    color: rgb(41, 84, 41);
+    background-color: tan;
+}
+
+#none a{
+    color:rgb(41, 84, 41);
 }
 
 h2{
@@ -84,71 +99,12 @@ h2{
     background-color: rgb(41, 84, 41);
 }
 
-
-
-#shopping_cart{
-    height: 50px;
-    width: 50px;
-    background-color:  rgb(41, 84, 41);
-}
-
-.cart{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 10px;
-}
-
-#reserve{
-    margin-right: 10px;
-}
-#park-btn{
-    /* align-self: flex-start; */
-    float: right;
-}
-
-
-
-/* site cards */
-#park-list{
-    width: 600px;
-    max-height: 300px;
-    overflow:auto;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    background-color: tan;
-    border: 2px solid black;
-}
-
-#res-list{
-    border: 2px solid black;
+#reservations{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 600px;
-    height: 300px;
+    gap: 10px;
 }
-
-
-
-
-/* pop up message for confirmed reservation */
-#confirmed{
-    display: flex;
-}
-
-#message{
-    background-color: tan;
-}
-
-#check{
-    height: 25px;
-    width: 25px;
-}
-
-/* site & cart cards */
 
 .card{
     width: 375px;
@@ -161,14 +117,13 @@ h2{
     box-shadow: 2px 2px 5px rgb(0,0,0);
 }
 
-.res{
-    margin-top: 0px;
-    width: 375px;
-    height: 115px;
-    margin-top: 25px;
+.myRes{
+    height: 100px;
 }
 
-
+#delete{
+    align-self: flex-start;
+}
 
 #camp-pic{
     height: 100px;
@@ -184,7 +139,7 @@ h2{
     margin: 5px;
 }
 
-#site-name{
+.campsite{
     margin-left: 20px;
     text-decoration: underline;
     font-size: x-large;
@@ -193,8 +148,6 @@ h2{
 
 #park{
     font-weight: bold;
-    font-style: italic;
-    align-self: flex-start;
 }
 
 #site-details{
@@ -205,13 +158,10 @@ h2{
     padding-left: 5px;
 }
 
+
 /* buttons */
 
-#add, #delete{
-    align-self: flex-end;
-}
-
-#reserve, #add, #delete{
+#delete{
     margin-right: 10px;
     background-color: #e1ecf4;
     border-radius: 3px;
@@ -229,16 +179,12 @@ h2{
     text-decoration: none;
 }
 
-#add:hover,
-#delete:hover,
-#reserve:hover{
+#delete:hover{
   background-color: #b3d3ea;
   color: #2c5777;
 }
 
-#add:active,
-#delete:active,
-#reserve:active {
+#delete:active {
   background-color: #a0c7e4;
   box-shadow: none;
   color: #2c5777;

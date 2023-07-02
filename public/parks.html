@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./reset.css">
-    <link rel="stylesheet" href="./style.css">
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <link rel="stylesheet" href="./parks.css">
     <title>National Parks</title>
 </head>
 <body>
@@ -13,14 +14,22 @@
         <h1 id="header">National Parks List</h1>
         <nav>
             <a href="./index.html">Home</a>
-            <a href="./profile.html">Profile</a>
+            <a href="./reservations.html">Profile</a>
             <a href="./parks.html">National Parks</a>
         </nav>
     </header>
-
+    <main>
+        <section id="nat-parks">
+            <form  id="nat-park-list">
+                <label for="park-select">Filter By Park</label>
+                <select id="park-seclect"></select>
+                <button id="Search">Search</button>
+            </form>
+        </section>
+    </main>
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="../main.js"></script>
+    <script src="./parks.js"></script>
 </body>
 </html>

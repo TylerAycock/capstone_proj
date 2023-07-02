@@ -1,46 +1,43 @@
-const myResBtn = document.querySelector("#reservations");
-const resList = document.querySelector("#my-res");
-
-reservArr = [];
+// const myResBtn = document.querySelector("#resbtn");
+const reservations = document.getElementById('reservations')
 
 const displayRes = (reservArr) => {
-  resList.innerHTML = "";
+  reservations.innerHTML = "";
   reservArr.forEach((resObj) => {
-    let {
-      res_id,
-      park_id,
-      park_name,
-      campsite_id,
-      campsite_name,
-      occ,
-      available,
-    } = resObj;
-    let resItem = document.createElement("li");
-    resItem.innerHTML = `
-            <span>ResID${res_id}</span>
-            <span>${park_name}</span>
-            <span>${campsite_name}</span>
-            <span>${occ}</span>
-            <button id="delete" onclick="deleteRes(${campsite_id})">Cancel</button>
+    console.log(resObj)
+    let { res_id, park_id, park_name, campsite_id, campsite_name, occ, price,} = resObj;
+    console.log(campsite_name)
+    let resCard = document.createElement("div");
+    resCard.classList.add('card')
+    resCard.classList.add('myRes')
+    resCard.innerHTML = `
+            <img src="./images/tent.jpg" alt="generic id photo" id="camp-pic">
+            <div id="content">
+              <ul id="site-details">
+                <li class="campsite"> ${campsite_name}</li>
+                <li id="park">${park_name}</li>
+                <li id="occ">Occ: ${occ}</li>
+              </ul>
+              <button id="delete" onclick="deleteRes(${campsite_id})">Cancel</button>
+            </div>
         `;
-    resList.appendChild(resItem);
+    reservations.appendChild(resCard);
   });
 };
 
 // pulls up all reservations
 const showReservation = (event) => {
   console.log(`Hey there camper...retrieving reservations`);
-  resList.innerHTML = ""
+  reservations.innerHTML = ""
   axios
     .get("/api/getres")
     .then((resp) => {
       if (resp.data.length === 0) {
-        let nores = document.createElement("li");
+        let nores = document.createElement("div");
         nores.innerHTML = `
-          <span>No sites currently reserved.</span>
-          <span>Click <a href="./index.html">Here</a> to get started</span>
+          <h2 id="none">No sites currently reserved. Click <a href="./index.html">HERE</a> to get started</span>
         `;
-        resList.appendChild(nores);
+        reservations.appendChild(nores);
       } else {
         console.log(resp.data);
         displayRes(resp.data);
@@ -61,4 +58,5 @@ const deleteRes = (id) => {
   }).catch(err =>console.log(err))
 };
 
-myResBtn.addEventListener("click", showReservation);
+// myResBtn.addEventListener("click", showReservation);
+showReservation()

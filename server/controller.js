@@ -15,7 +15,7 @@ module.exports = {
     sequelize
       .query(
         `
-        SELECT parks.park_name AS park, camp.campsite_name AS site, campsite_id as site_ID, parks.park_id, occupancy AS occ, available
+        SELECT parks.park_name AS park, camp.campsite_name AS site, campsite_id as site_ID, parks.park_id, occupancy AS occ, available, price
         FROM campsites AS camp
         JOIN parks
         ON parks.park_id = camp.park_id

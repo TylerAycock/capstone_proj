@@ -40,16 +40,16 @@ module.exports = {
             );
 
             INSERT INTO parks (park_name)
-            VALUES ('Acadia'),
-            ('Arches'),
-            ('Badlands'),
-            ('Big Bend'),
-            ('Bryce Canyon'),
-            ('Carlsbad Caverns'),
-            ('Channel Islands'),
-            ('Yosemite'),
-            ('Joshua Tree'),
-            ('Yellow Stone'); 
+            VALUES ('Acadia National Park'),
+            ('Arches National Park'),
+            ('Badlands National Park'),
+            ('Big Bend National Park'),
+            ('Bryce Canyon National Park'),
+            ('Carlsbad Caverns National Park'),
+            ('Channel Islands National Park'),
+            ('Yosemite National Park'),
+            ('Joshua Tree National Park'),
+            ('Yellow Stone National Park'); 
             
             INSERT INTO campsites (park_id, campsite_name, occupancy, available, price)
             VALUES (2, 'River Spot',10, true, 10),
