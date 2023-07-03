@@ -13,18 +13,29 @@
         <img src="./images/NPS-Transparent-Logo.png" alt="national park logo" id="logo">
         <h1 id="header">National Parks List</h1>
         <nav>
-            <a href="./index.html">Home</a>
-            <a href="./reservations.html">Profile</a>
-            <a href="./parks.html">National Parks</a>
+            <a href="/">Home</a>
+            <a href="/reservations">Profile</a>
+            <a href="/parks">National Parks</a>
         </nav>
     </header>
     <main>
+        <section id="form-section">
+            <!-- <form  id="nat-park-list"> -->
+    
+                <label for="park-select">Filter:</label>
+                <select id="park-select"></select>
+    
+                <input id="submit" type="submit">
+            <!-- </form> -->
+        </section>
         <section id="nat-parks">
-            <form  id="nat-park-list">
-                <label for="park-select">Filter By Park</label>
-                <select id="park-seclect"></select>
-                <button id="Search">Search</button>
-            </form>
+            <table id="park-table" >
+                <tr id="table-heading">
+                    <th>Name</th>
+                    <th>State</th>
+                </tr>
+
+            </table>
         </section>
     </main>
 

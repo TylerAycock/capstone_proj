@@ -118,8 +118,5 @@ const makeRes = (evt) => {
     .catch((err) => console.log(err));
 };
 
-// parkBtn.addEventListener("click", getCampsites);
 resBtn.addEventListener("click", makeRes);
-
-// newResArr.findIndex((newAddition) => newAddition === -1)
 getCampsites()
