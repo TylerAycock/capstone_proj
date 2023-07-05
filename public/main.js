@@ -11,9 +11,7 @@ let newResArr = [];
 // display list of avaialble sites
 const displaySites = (sitesArr) => {
   sites.innerHTML = "";
-  // console.log(parksArr)
   sitesArr.forEach((spotObj) => {
-    // console.log(spotObj);
     let { site_id, park, site, occ, price } = spotObj;
     let siteCard = document.createElement("div");
     siteCard.classList.add("card");
@@ -37,7 +35,6 @@ const displaySites = (sitesArr) => {
 const displayCart = (newResArr) => {
   cart.innerHTML = "";
   newResArr.forEach((spotObj) => {
-    // console.log(spotObj)
     let { site_id, park, site, occ, price } = spotObj;
     let resCard = document.createElement("div");
     resCard.classList.add("card");
@@ -60,8 +57,6 @@ const displayCart = (newResArr) => {
 
 //moves a campsite from the available list to your shopping cart list
 const addReserve = (id) => {
-  // console.log(id);
-  // console.log(newResArr);
 
   if (newResArr.filter((site) => site.site_id === id).length > 0) {
     alert("Campsite has already been added to cart!");
@@ -79,9 +74,7 @@ const addReserve = (id) => {
 const removeReserve = (id) => {
   console.log(`Campsite #${id} removed from shopping cart`);
   let index = newResArr.findIndex((site) => site.site_id === id);
-  // parksArr.push(newResArr[index]);
   newResArr.splice(index, 1);
-  // parksArr.sort();
   displaySites(parksArr);
   displayCart(newResArr);
   if (newResArr.length === 0) {

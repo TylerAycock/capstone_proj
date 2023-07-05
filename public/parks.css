@@ -76,30 +76,38 @@ form {
 } 
 #nat-parks{
     display: flex;
+    flex-direction: column;
     width: 100%;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
 }
 
-#park-table{
-    border-collapse: collapse; /* Collapse borders */
-  width: 100%; /* Full-width */
-  border: 1px solid #ddd; /* Add a grey border */
-  font-size: 18px; /* Increase font-size */
+#park-table, #key-table{
+  border-collapse: collapse; 
+  width: 100%; 
+  border: 1px solid #ddd; 
+  font-size: 20px; 
 }
 
-#park-table th, #park-table td {
+
+#key-table th{
+    font-weight: bold;
+}
+
+
+
+ #park-table td,
+ #key-table th{
   text-align: left; 
   padding: 12px; 
+  width: 300px;
 }
 
-#park-table tr{
+#park-table tr,
+#key-table tr{
     border-bottom: 1px solid #ddd;
 }
 
-/* #park-table td{
-    border-left: 1px solid #ddd;;
-} */
 
 #park-table tr.header, #park-table tr:hover{
     background-color:#f1f1f1;
