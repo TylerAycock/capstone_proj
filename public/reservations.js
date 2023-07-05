@@ -49,8 +49,6 @@ const showReservation = (event) => {
 //deletes selected reservation
 const deleteRes = (id) => {
   console.log(`attempting to cancel reservation ID ${id}`);
-  // let index = reservArr.findIndex((site) => site.campsite_id === id);
-  // console.log(reservArr[index])
   axios.delete(`/api/delete/${id}`).then((resp) => {
     console.log("reservation canceled");
   }).then(() =>{

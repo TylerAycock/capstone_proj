@@ -21,7 +21,10 @@ module.exports = {
 
             CREATE TABLE parks (
                 park_id SERIAL PRIMARY KEY,
-                park_name VARCHAR NOT NULL
+                park_name VARCHAR NOT NULL,
+                state VARCHAR NOT NULL,
+                acres INT NOT NULL,
+                est DATE NOT NULL
             );
 
             CREATE TABLE campsites (
@@ -39,17 +42,17 @@ module.exports = {
                 campsite_id INTEGER REFERENCES campsites(campsite_id) NOT NULL
             );
 
-            INSERT INTO parks (park_name)
-            VALUES ('Acadia National Park'),
-            ('Arches National Park'),
-            ('Badlands National Park'),
-            ('Big Bend National Park'),
-            ('Bryce Canyon National Park'),
-            ('Carlsbad Caverns National Park'),
-            ('Channel Islands National Park'),
-            ('Yosemite National Park'),
-            ('Joshua Tree National Park'),
-            ('Yellow Stone National Park'); 
+            INSERT INTO parks (park_name, state, acres, est)
+            VALUES ('Acadia National Park', 'Maine',49071, '1919-02-26'),
+            ('Arches National Park', 'Utah', 76678,'1971-11-12' ),
+            ('Badlands National Park', 'South Dakota', 242755, '1978-11-10'),
+            ('Big Bend National Park', 'Texas', 801163, '1944-06-12'),
+            ('Bryce Canyon National Park', 'Utah',35835, '1928-02-25'),
+            ('Carlsbad Caverns National Park', 'New Mexico', 46766, '1930-05-14'),
+            ('Channel Islands National Park', 'California', 249561, '1980-03-05'),
+            ('Yosemite National Park','California', 761747, '1890-10-01'),
+            ('Joshua Tree National Park', 'California',795155,'1994-10-31'),
+            ('Yellow Stone National Park', 'Wyoming', 2213790, '1872-03-01'); 
             
             INSERT INTO campsites (park_id, campsite_name, occupancy, available, price)
             VALUES (2, 'River Spot',10, true, 10),
